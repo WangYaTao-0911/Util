@@ -1,13 +1,13 @@
 package com.wyt.common.utils;
 
-import static org.junit.Assert.*;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 import org.junit.Test;
-
+//开始测试
 public class DateUtilTest {
 
 	@Test//月初
