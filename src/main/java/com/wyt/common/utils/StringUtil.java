@@ -1,9 +1,62 @@
 package com.wyt.common.utils;
 
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.text.NumberFormat;
 import java.util.Random;
 
 public class StringUtil {
+	
+	/**
+	 * 校验传入的参数是否为url
+	 * @param param
+	 * @return
+	 */
+	public static boolean isHttpUrl(String param) {
+		 URL url;  
+		 try {  
+	         url = new URL(param);  
+	         InputStream in = url.openStream();  
+	         return true; 
+	    } catch (Exception e1) {  
+	         System.out.println("连接打不开!");  
+	         url = null;  
+	    }  
+		 return false;
+		
+	}
+	/*
+	* 方法：生成唯一标签名，处理步骤：
+	* 1、全部变成小写；
+	* 2、清空两边的空格，把中间所有的空格替换成“-”；
+	* 3、使用URLEncoder.encode()编码
+	* 最后返回处理的结果。
+	* 举例“Spring MVC”处理后为“spring-mvc”，“Spring Mvc”处理后也为“spring-mvc”
+	*/
+	public static String toUniqueTerm(String term){
+		return term.toLowerCase().trim().replaceAll(" ","-");
+	}
+	
+	
+	/**
+	 * 百分比计算
+	 * @Title: percent 
+	 * @Description: TODO
+	 * @param num
+	 * @param total
+	 * @return
+	 * @return: String
+	 */
+	public static Integer percent(Integer num,Integer total){
+		//创建一个数值格式化对象
+		NumberFormat numberFormat=NumberFormat.getIntegerInstance();
+		//设置精准到小数点后的0位
+		numberFormat.setMaximumFractionDigits(0);
+		String result=numberFormat.format((float)num/(float)total*100);
+		return Integer.parseInt(result);
+	}
+	
 	/**
 	 * 
 	 * @Title: isNumber 

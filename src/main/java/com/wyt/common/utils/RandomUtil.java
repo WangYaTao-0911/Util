@@ -1,9 +1,28 @@
 package com.wyt.common.utils;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
 
 public class RandomUtil {
+	
+	/**
+	 * 	使用map集合对传入的字符串进行统计个数
+	 */
+	public static HashMap countOfMap(String s) {
+		HashMap<Character, Integer> map = new HashMap<>();
+        for(int i=0; i<s.length(); i++){
+            char c = s.charAt(i);
+            Integer count = map.get(c);
+            if(count==null){
+                map.put(c, 1);
+            }else{
+                map.put(c, count+1);
+            }
+        }
+        return map;
+	}
+	
 	// 方法1：返回min-max之间的随机整数（包含min和max值），例如返回1-3之间的随机数，那么返回1或2或3都是正确的，返回4就不对。 (5分)
     // 1 3
 	public static int random(int min,int max) {
